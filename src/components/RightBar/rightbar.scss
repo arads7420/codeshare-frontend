@@ -1,0 +1,38 @@
+.rightbar {
+    flex: 1;
+    border-left: 1px solid var(--light-border);
+    height: calc(100vh - 80px);
+    background-color: #ffffff;
+    position: sticky;
+    top: 80px;
+    padding: 20px;
+    color: var(--dark-font);
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        padding: 20px;
+        border-radius: 24px;
+        border: 1px solid var(--light-border);
+    }
+    a {
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        border-radius: 16px;
+        width: 100%;
+        padding: 16px 0;
+        cursor: pointer;
+    }
+    .primary {
+        background-color: var(--primary);
+        border: none;
+        color: #ffffff;
+    }
+    .secondary {
+        background-color: #ffffff;
+        border: 1px solid var(--primary);
+        color: var(--primary);
+    }
+}
