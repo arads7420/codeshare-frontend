@@ -1,3 +1,5 @@
+@import "../../style.scss";
+
 .post {
     display: flex;
     justify-content: space-between;
@@ -6,10 +8,12 @@
     height: 136px;
     gap: 10px;
     border-bottom: 1px solid var(--light-border);
+
     .title {
         color: var(--dark-lt-font);
         font-size: var(--ft-lg);
         font-weight: 600;
+        cursor: pointer;
     }
     .shortDesc {
         color: var(--light-font);
@@ -20,6 +24,7 @@
         img {
             border-radius: 10px;
             object-fit: cover;
+            cursor: pointer;
         }
         .title {
             font-weight: bolder;
@@ -31,12 +36,18 @@
         justify-content: space-between;
         gap: 20px;
         flex: 6;
+        color: var(--light-font);
+        .header {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
         .info {
             display: flex;
             align-items: center;
             gap: 20px;
             font-size: var(--ft-sm-2);
- 
+            cursor: pointer;
             .comment-count {
                 display: flex;
                 align-items: center;
@@ -44,13 +55,16 @@
                 font-size: var(--ft-sm-2);
                 color: var(--light-font);
             }
+            .type, .category {
+                font-weight: 400;
+            }
         }
     }
     .right {
         flex: 1;
         .upvotes {
             width: 60px;
-            padding: 8px;
+            padding: 8px 12px 8px 8px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -68,6 +82,9 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    .desc {
+        min-width: 800px;
+    }
     .top {
         img {
             border-radius: 10px;
@@ -77,6 +94,12 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @include mobile {
+            flex-direction: column;
+            gap: 60px;
+        }
+
         .textcontent {
             display: flex;
             flex-direction: column;
@@ -110,13 +133,22 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                gap: 4px;
+                gap: 5px;
                 border: none;
                 border-radius: 10px;
-                padding: 10px 10px;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+
+            .primary {
                 background-color: var(--primary);
                 color: #ffffff;
-                cursor: pointer;
+            }
+
+            .secondary {
+                background-color: #ffffff;
+                color: var(--light-font);
+                border: 1px solid var(--light-font);
             }
         }
     }
@@ -124,5 +156,27 @@
         display: flex;
         gap: 40px;
         color: var(--light-font);
+    }
+    .developedby {
+        font-size: var(--ft-sm-1);
+        color: var(--light-font);
+        p {
+            margin-bottom: 20px;
+        }
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            a {
+                text-decoration: none;
+                color: var(--light-font);
+            }
+            img {
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
     }
 }

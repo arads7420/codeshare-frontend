@@ -1,3 +1,5 @@
+@import "../../style.scss";
+
 .leftbar {
     flex: 1;
     border-right: 1px solid var(--light-border);
@@ -6,9 +8,14 @@
     position: sticky;
     top: 80px;
 
+    @include mobile {
+        display: none;
+    }
+
     a {
         text-decoration: none;
         padding: 10px 20px;
+        color: var(--dark-lt-font);
     }
     .container {
         padding: 60px;

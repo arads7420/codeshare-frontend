@@ -1,3 +1,5 @@
+@import "../../style.scss";
+
 .navbar {
     display: flex;
     align-items: center;
@@ -9,6 +11,11 @@
     top: 0;
     background-color: #ffffff;
     z-index: 100;
+
+    @include mobile {
+        padding: 0px 20px;
+    }
+
     .logo {
         color: var(--primary);
     }
@@ -33,10 +40,71 @@
                 padding: 10px;
                 border: none;
                 width: 500px;
+
+                @include mobile {
+                    display: none;
+                }
+
+                // @include tablet {
+                //     width: 200px;
+                // }
             }
         }
     }
     .right {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        .dropdownmenu {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px 20px;
+            width: 200px;
+            position: absolute;
+            top: 60px;
+            right: 80px;
+            background-color: #ffffff;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            .item {
+                color: var(--light-font);
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            a {
+                text-decoration: none;
+                color: var(--light-font);
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            &:hover {
+                display: flex;
+            }
+        }
+        .newproject {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            font-size: var(--ft-sm-1);
+            padding: 5px 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            gap: 10px;
+            span {
+                @include mobile {
+                    display: none;
+                }
+            }
+        }
+        .newproject:hover {
+            box-shadow: 0 0 10px 0px var(--primary);
+        }
+
         .user {
             display: flex;
             align-items: center;
@@ -46,6 +114,15 @@
                 width: 30px;
                 border-radius: 50%;
                 object-fit: cover;
+            }
+        }
+
+        .parent {
+            padding: 10px;
+            &:hover {
+                .dropdownmenu {
+                    display: flex;
+                }
             }
         }
     }

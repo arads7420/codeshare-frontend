@@ -1,3 +1,5 @@
+@import "../../style.scss";
+
 .rightbar {
     flex: 1;
     border-left: 1px solid var(--light-border);
@@ -7,6 +9,11 @@
     top: 80px;
     padding: 20px;
     color: var(--dark-font);
+
+    @include mobile {
+        display: none;
+    }
+
     .container {
         display: flex;
         flex-direction: column;

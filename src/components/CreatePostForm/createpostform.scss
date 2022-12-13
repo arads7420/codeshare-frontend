@@ -1,0 +1,90 @@
+
+.createpostform {
+    display: flex;
+    .error {
+        font-size: var(--ft-sm-2);
+        color: rgb(67, 108, 177);
+    }
+    .left {
+        flex: 1;
+        height: calc(100vh - 80px);
+        background: rgb(241,241,241);
+        background: linear-gradient(90deg, rgba(241,241,241,1) 0%, rgba(191,252,244,0) 0%, rgba(255,143,143,1) 0%, rgba(255,215,215,0) 100%, rgba(178,255,245,1) 100%, rgba(255,186,181,1) 100%);
+    }
+    .right {
+        flex: 1;
+        padding: 20px 40px;
+        .formcontainer {
+            .header {
+                h1 {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+        .progressbar {
+            margin-bottom: 20px;
+            .prog {
+                height: 10px;
+                background-color: var(--primary);
+            }
+        }
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    input {
+        border: none;
+        border: 1px solid var(--light-border);
+        padding: 20px 10px;
+        outline: none;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        color: #ffffff;
+        border-radius: 16px;
+        cursor: pointer;
+    }
+    select {
+        width: 50%;
+        height: 40px;
+        cursor: pointer;
+    }
+    textarea {
+        border-radius: 10px;
+    }
+}
+
+.footer {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    button {
+        padding: 20px 40px;
+        border-radius: 24px;
+        cursor: pointer;
+        font-size: var(--ft-lg);
+    }
+
+    .primary {
+        background-color: var(--primary);
+        color: #ffffff;
+        border: none;
+    }
+    .secondary {
+        border: 1px solid var(--primary);
+        color: var(--primary);
+        background-color: #ffffff;
+    }
+}

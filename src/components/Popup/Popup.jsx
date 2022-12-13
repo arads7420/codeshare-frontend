@@ -8,8 +8,7 @@ export const Popup = (props) => {
     return (
         <Dialog open={openPopup} maxWidth="md">
             <DialogTitle>
-                <div className="test" style={{display: "flex", justifyContent: "space-between"}}>
-                    <div></div>
+                <div style={{float: "right"}}>
                     <button className="close" onClick={() => setOpenPopup(false)}><CloseIcon /></button>
                 </div>
                 

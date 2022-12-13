@@ -4,6 +4,10 @@
     align-items: center;
     gap: 20px;
     color: var(--dark-font);
+    a {
+        text-decoration: none;
+        color: var(--primary);
+    }
     .form-container {
         display: flex;
         flex-direction: column;
@@ -36,5 +40,9 @@
             border-radius: 24px;
             cursor: pointer;
         }
+    }
+    .error {
+        font-size: var(--ft-sm-2);
+        color: rgb(67, 108, 177);
     }
 }

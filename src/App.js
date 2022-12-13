@@ -1,4 +1,3 @@
-import "./style.scss"
 import { Login } from "./pages/login/Login"
 import { Register } from "./pages/register/Register"
 import { Navbar } from "./components/Navbar/Navbar"
@@ -7,30 +6,61 @@ import { RightBar } from "./components/RightBar/RightBar"
 import { Home } from "./pages/home/Home"
 import { Profile } from "./pages/profile/Profile"
 import { Categories } from "./pages/categories/Categories"
+import { CreatePostForm } from "./components/CreatePostForm/CreatePostForm"
 import {
   createBrowserRouter,
   Navigate,
   Outlet,
   RouterProvider,
 } from "react-router-dom";
-
+import { useContext } from "react"
+import { AuthContext } from "./context/authContext"
+import { QueryClient, QueryClientProvider } from 'react-query'
+ 
+const queryClient = new QueryClient()
 
 
 function App() {
-  const currentUser = false
+  const {currentUser} = useContext(AuthContext)
 
   const Layout = () => {
     return (
-      <div>
-        <Navbar/>
-        <div style={{display: "flex"}}>
-          <LeftBar />
-          <div style={{flex: 2}}> 
-            <Outlet />
+      <QueryClientProvider client={queryClient}>
+        <div>
+          <Navbar/>
+          <div style={{display: "flex"}}>
+            <LeftBar />
+            <div style={{flex: 2}}> 
+              <Outlet />
+            </div>
+            <RightBar />
           </div>
-          <RightBar />
         </div>
-      </div>
+      </QueryClientProvider>
+    )
+  }
+
+
+  const ProfileLayout = () => {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <div>
+          <Navbar/>
+          <Profile/>
+        </div>
+      </QueryClientProvider>
+    )
+  }
+
+  
+  const CreatePostFormLayout = () => {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <div>
+          <Navbar/>
+          <CreatePostForm/>
+        </div>
+      </QueryClientProvider>
     )
   }
 
@@ -55,11 +85,20 @@ function App() {
           path: "/categories",
           element: <Categories />
         },
-        {
-          path: "profile/:id",
-          element: <ProtectedRoute><Profile /></ProtectedRoute>
-        }
+        // {
+        //   path: "profile/:id",
+        //   // element: <ProtectedRoute><Profile /></ProtectedRoute>
+        //   element: <Profile />
+        // }
       ]
+    },
+    {
+      path: "profile/:id",
+      element: <ProfileLayout />,
+    },
+    {
+      path: "/createpost",
+      element: <CreatePostFormLayout />,
     },
     {
       path: "/login",

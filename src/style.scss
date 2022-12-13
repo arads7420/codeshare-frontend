@@ -13,3 +13,46 @@
     --ft-sm-1: 0.9rem;
     --ft-sm-2: 0.8rem;
 }
+::-webkit-scrollbar{
+    height: 4px;
+    width: 8px;
+    background: gray;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+::-webkit-scrollbar-thumb:horizontal{
+    background: grey;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:vertical{
+    background: grey;
+    border-radius: 10px;
+}
+
+@mixin mobile {
+    @media (max-width: 960px) {
+        @content;
+    }
+}
+
+
+// @mixin tablet {
+//     @media (max-width: 960px) {
+//         @content;
+//     }
+// }

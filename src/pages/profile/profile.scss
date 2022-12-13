@@ -1,0 +1,112 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    .top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 250px;
+        background: linear-gradient(180deg,transparent,hsla(0,0%,95%,.29) 47.39%,#fff),linear-gradient(90deg,#f9ddf1 .07%,#e5e1ff 16.73%,#daedff 34.48%,#e2f4e3 49.98%,#ebf5d8 66.12%,#faf2da 81.95%,#fbe5d8 99.9%);
+        .userdetails {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;        
+            width: 50%;
+            height: 100%;
+            .left {
+                display: flex;
+                gap: 40px;
+                align-items: center;
+                img {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+            .right {
+                button {
+                    display: flex;
+                    align-items: center;
+                    gap: 3px;
+                    padding: 10px 20px;
+                    border: 1px solid var(--light-font);
+                    border-radius: 10px;
+                    color: var(--light-font);
+                    background-color: #ffffff;
+                    font-size: var(--ft-lg);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .center {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .name {
+            color: var(--dark-font);
+            font-weight: 600;
+            font-size: var(--ft-lg-xxl);
+        }
+        .shortDesc {
+            font-weight: 200;
+            margin-top: 10px;
+        }
+        .username {
+            font-weight: 300;
+            font-size: var(--ft-sm-1);
+        }
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        width: 50%;
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            color: var(--light-font);
+            span {
+                font-weight: 600;
+            }
+            p {
+                font-weight: 400;
+            }
+            .links {
+                display: flex;
+                gap: 20px;
+                .link-item {
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    a {
+                        text-decoration: none;
+                        color: var(--light-font);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.notfound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(80vh - 80px);
+    gap: 40px;
+    color: var(--light-font);
+    background-color: #efefef;
+    .title {
+        font-size: 4rem;
+    }
+}
