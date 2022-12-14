@@ -1,3 +1,5 @@
+@import "../../style.scss";
+
 .profile {
     display: flex;
     flex-direction: column;
@@ -7,6 +9,11 @@
         justify-content: center;
         height: 250px;
         background: linear-gradient(180deg,transparent,hsla(0,0%,95%,.29) 47.39%,#fff),linear-gradient(90deg,#f9ddf1 .07%,#e5e1ff 16.73%,#daedff 34.48%,#e2f4e3 49.98%,#ebf5d8 66.12%,#faf2da 81.95%,#fbe5d8 99.9%);
+        
+        @include mobile {
+            justify-content: flex-start !important;
+        }
+    
         .userdetails {
             display: flex;
             align-items: center;
@@ -14,15 +21,27 @@
             gap: 40px;        
             width: 50%;
             height: 100%;
+            @include mobile {
+                gap: 30px;
+                width: 100%;
+                padding: 0 20px;
+            }
             .left {
                 display: flex;
                 gap: 40px;
                 align-items: center;
+                @include mobile {
+                    gap: 10px;
+                }
                 img {
                     width: 100px;
                     height: 100px;
                     border-radius: 50%;
                     object-fit: cover;
+                    @include mobile {
+                        width: 50px;
+                        height: 50px;
+                    }
                 }
             }
             .right {
@@ -37,6 +56,11 @@
                     background-color: #ffffff;
                     font-size: var(--ft-lg);
                     cursor: pointer;
+                    @include mobile {
+                        padding: 5px 10px;
+                        font-size: 0.7rem;
+                    }
+                
                 }
             }
         }
@@ -53,6 +77,9 @@
         .shortDesc {
             font-weight: 200;
             margin-top: 10px;
+            @include mobile {
+                font-size: 0.8rem;
+            }
         }
         .username {
             font-weight: 300;
@@ -68,7 +95,10 @@
         flex-direction: column;
         gap: 40px;
         width: 50%;
-
+        @include mobile {
+            padding: 40px 20px;
+            width: 100%;
+        }
         .item {
             display: flex;
             flex-direction: column;
@@ -76,13 +106,24 @@
             color: var(--light-font);
             span {
                 font-weight: 600;
+                @include mobile {
+                    font-size: 0.9rem;
+                }
             }
             p {
-                font-weight: 400;
+                font-weight: 400; 
+                @include mobile {
+                    font-size: 0.8rem;
+                }
             }
             .links {
                 display: flex;
                 gap: 20px;
+                span {
+                    @include mobile {
+                        font-size: 0.7rem;
+                    }
+                }
                 .link-item {
                     display: flex;
                     gap: 10px;
@@ -90,6 +131,9 @@
                     a {
                         text-decoration: none;
                         color: var(--light-font);
+                        @include mobile {
+                            font-size: 0.9rem;
+                        }
                     }
                 }
             }

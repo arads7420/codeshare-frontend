@@ -1,0 +1,28 @@
+@import "../../style.scss";
+
+.editprofile {
+    width: 800px;
+    @include mobile {
+        width: 100%;
+    }
+    h2 {
+        margin-bottom: 40px;
+    }
+    button {
+        width: fit-content;
+        background-color: var(--primary);
+    }
+    .profilepic {
+        display: flex;
+        align-items: center;
+        width: 400px;
+        img {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+
+}

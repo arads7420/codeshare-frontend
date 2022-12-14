@@ -1,0 +1,33 @@
+@import "../../style.scss";
+
+.leftnavbar {
+    flex: 1;
+    border-right: 1px solid var(--light-border);
+    height: calc(100vh - 80px);
+    background-color: #ffffff;
+    position: sticky;
+    top: 80px;
+    display: none;
+    @include mobile {
+        position: absolute;
+        left: 0px;
+    }
+
+    a {
+        text-decoration: none;
+        padding: 10px 20px;
+        color: var(--dark-lt-font);
+    }
+    .container {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .active {
+            color: #ffffff;
+            border-radius: 24px;
+            background: rgb(255,97,84);
+            background: linear-gradient(90deg, rgba(255,97,84,1) 30%, rgba(255,149,141,1) 70%, rgba(255,186,181,1) 100%, rgba(255,215,212,1) 100%, rgba(255,255,255,1) 100%);
+        }
+    }
+}

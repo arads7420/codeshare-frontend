@@ -7,6 +7,7 @@ import { useContext, useState } from "react"
 import { AuthContext } from "../../context/authContext"
 import { useQuery, useQueryClient, useMutation } from 'react-query'
 import { makeRequest } from "../../axios"
+import Carousel from 'nuka-carousel'
 
 export const Post = ({post}) => {
   const {currentUser} = useContext(AuthContext)
@@ -61,12 +62,8 @@ export const Post = ({post}) => {
               <div className="shortDesc">{post.shortDesc}</div>      
             </div>
             <div className="info" onClick={handleClick}>
-              <div className="comment-count">
-                <ModeCommentOutlinedIcon style={{fontSize: "0.8rem"}}/>
-                {post.comments}
-              </div>
               <div className="type">{post.type.name}</div>
-              <div className="category">{post.category}</div>
+              <div className="category">{post.category.name}</div>
             </div>
           </div>
           <div className="right">
@@ -113,18 +110,27 @@ export const Post = ({post}) => {
           </div>
           <div className="info">
             <div className="type">{post.type.name}</div>
-            <div className="category">{post.category}</div>
+            <div className="category">{post.category.name}</div>
           </div>
           <div className="desc">
             {post.description}
           </div>
+          <div className="imagecarousel">
+            {post.images.length > 0 && (
+              <Carousel wrapAround={true} adaptiveHeight={true}>
+                  {post.images.map((imgUrl, idx) => 
+                    <img src={imgUrl} key={idx} alt="" />)}
+               </Carousel>
+            )}
+          </div>
           <div className="developedby">
             <p>Developed By</p>
             <div className="user">
-              <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" />
-              <Link to={`/profile/${post.userId}`}>
-                  {post.username}
+              <img src={post.user.img} alt="" />
+              <Link to={`/profile/${post.user.id}`}>
+                  {post.user.username}
               </Link>
+              
               </div>
           </div>
         </div>

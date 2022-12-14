@@ -3,10 +3,12 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import { useQuery, useQueryClient, useMutation } from 'react-query'
 import { makeRequest } from "../../axios"
-import { useContext } from "react"
+import { useContext , useState, useEffect } from "react"
 import { AuthContext } from "../../context/authContext"
-import { useParams } from "react-router-dom"
+import { useParams, useLocation, useNavigate} from "react-router-dom"
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import { Popup } from "../../components/Popup/Popup"
+import { EditProfileForm } from "../../components/EditProfileForm/EditProfileForm"
 
 export const Profile = () => {
   const {currentUser} = useContext(AuthContext)
@@ -17,6 +19,9 @@ export const Profile = () => {
       return res.data
     })
   )
+  const navigate = useNavigate()
+  const [openPopup, setOpenPopup] = useState(false)
+  const handleClick = () => setOpenPopup(true);
 
   if(user) {
     return (
@@ -39,34 +44,54 @@ export const Profile = () => {
             </div>
             {currentUser && user.id === currentUser.id && (
               <div className="right">
-                <button>
+                <button onClick={handleClick}>
                   <EditOutlinedIcon/>
-                  Edit Profile</button>
+                  Edit Profile
+                </button>
               </div>
             )}
           </div>
         </div>
         <div className="container">
           <div className="content">
-            <div className="item">
-              <span>ABOUT</span>
-              <p>{user.about}</p>
-            </div>
-            <div className="item">
-              <span>LINKS</span>
-              <div className="links">
-                <div className="link-item">  
-                  <GitHubIcon/>
-                  <a href={user.githublink} target="_blank" rel="noreferrer">Github</a>
-                </div>
-                <div className="link-item">
-                  <LinkedInIcon />
-                  <a href={user.linkedinlink} target="_blank" rel="noreferrer">Linkedlin</a>
-                </div>
+            {user.about && (
+              <div className="item">
+                <span>ABOUT</span>
+                <p>{user.about}</p>
               </div>
-            </div>
+            )}
+
+            {(user.githublink || user.linkedinlink) && (
+              <div className="item">
+                <span>LINKS</span>
+                <div className="links">
+                  {user.githublink && (
+                    <div className="link-item">  
+                      <GitHubIcon/>
+                      <a href={user.githublink} target="_blank" rel="noreferrer">Github</a>
+                    </div>
+                  )}
+                  {user.linkedinlink && (
+                    <div className="link-item">
+                      <LinkedInIcon />
+                      <a href={user.linkedinlink} target="_blank" rel="noreferrer">Linkedlin</a>
+                    </div>
+                  )}
+
+                </div>
+              </div>   
+            )}
+            
           </div>
         </div>
+        {/* EDIT PROFILE FORM */}
+        <Popup
+          openPopup={openPopup}
+          setOpenPopup={setOpenPopup}
+          title="Update Profile"
+        >
+        <EditProfileForm user={user} setOpenPopup={setOpenPopup}/>
+        </Popup>
       </div>
     )
   }

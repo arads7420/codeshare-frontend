@@ -1,10 +1,10 @@
-import "./leftbar.scss"
+import "./leftnavbar.scss"
 import { NavLink } from "react-router-dom"
 
-export const LeftBar = () => {
-
+export const LeftNavbar = ({isOpen}) => {
+  
   return (
-    <div className="leftbar">
+    <div className="leftnavbar" style={isOpen ? {display: "block"} : {display: "none"}}>
       <div className="container">
         <NavLink 
           to="/"

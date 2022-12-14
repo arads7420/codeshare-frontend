@@ -1,3 +1,4 @@
+@import "../../style.scss";
 
 .createpostform {
     display: flex;
@@ -6,13 +7,17 @@
         color: rgb(67, 108, 177);
     }
     .left {
-        flex: 1;
-        height: calc(100vh - 80px);
+        flex: 2;
+        min-height: calc(100vh - 80px);
         background: rgb(241,241,241);
         background: linear-gradient(90deg, rgba(241,241,241,1) 0%, rgba(191,252,244,0) 0%, rgba(255,143,143,1) 0%, rgba(255,215,215,0) 100%, rgba(178,255,245,1) 100%, rgba(255,186,181,1) 100%);
+    
+        @include mobile {
+            display: none;
+        }
     }
     .right {
-        flex: 1;
+        flex: 3;
         padding: 20px 40px;
         .formcontainer {
             .header {
@@ -29,13 +34,17 @@
             }
         }
     }
+    
+    
 }
-
 form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%;
+    width: 80%;
+    @include mobile {
+        width: 100%;
+    }
     div {
         display: flex;
         flex-direction: column;
@@ -49,7 +58,8 @@ form {
         outline: none;
     }
     button {
-        width: 100%;
+        width: fit-content;
+        background-color: var(--primary);
         padding: 10px;
         border: none;
         color: #ffffff;
@@ -86,5 +96,41 @@ form {
         border: 1px solid var(--primary);
         color: var(--primary);
         background-color: #ffffff;
+    }
+}
+.imageinput {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    button: {
+        border: 1px solid var(--primary);
+        background-color: #ffffff;
+        color: var(--primary);
+    }
+    .uploadedimages {
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        overflow-x: scroll;
+        border: 1px solid var(--light-border);
+        border-radius: 10px;
+        img {
+            display: block;
+            border: 1px solid var(--light-border);
+            height: 60px;
+            margin: 10px 0;
+        }
+        // .deleteButton {
+        //     position: absolute;
+        //     top: 0px;
+        //     left: 0px;
+        //     color: #ffffff;
+        //     padding: 2px 2px;
+        //     font-size: 0.8rem;
+        //     border-radius: 50%;
+        //     cursor: pointer;
+        //     background-color: var(--primary);
+        // }
     }
 }

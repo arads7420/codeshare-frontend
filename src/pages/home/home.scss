@@ -1,0 +1,27 @@
+@import "../../style.scss";
+.home {
+    .homeheader {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 60px 40px;
+
+        @include mobile {
+            padding: 60px 20px;
+        }
+    
+        .hometitle {
+            font-size: 2rem;
+            @include mobile {
+                font-size: 1.5rem;
+            }
+        }
+        .homeshortdesc {
+            font-weight: 200;
+            font-size: 1.2rem;
+            @include mobile {
+                font-size: 1rem;
+            }
+        }
+    }
+}

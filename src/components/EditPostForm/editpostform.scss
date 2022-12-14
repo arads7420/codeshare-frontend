@@ -1,0 +1,69 @@
+@import "../../style.scss";
+
+
+.editpostform {
+    width: 800px;
+    @include mobile {
+        width: auto;
+    }
+    .logo {
+        display: flex; 
+        gap: 20px;
+        margin-bottom: 20px;
+        width: 100px;
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    }
+    button {
+        width: fit-content;
+        background-color: var(--primary);
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+    }
+    .imageinput {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        button: {
+            border: 1px solid var(--primary);
+            background-color: #ffffff;
+            color: var(--primary);
+        }
+    }
+}
+
+.uploadedimages {
+    width: 500px;
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+    border: 1px solid var(--light-border);
+    border-radius: 10px;
+    padding: 0px 10px;
+    .imgcontainer {
+        position: relative;
+    }
+    img {
+        display: block;
+        border: 1px solid var(--light-border);
+        height: 60px;
+        width: 60px;
+        margin: 10px 0;
+    }
+    .deleteButton {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        color: #ffffff;
+        padding: 2px 2px;
+        font-size: 0.8rem;
+        border-radius: 50%;
+        cursor: pointer;
+        background-color: var(--primary);
+    }
+}

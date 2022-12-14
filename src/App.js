@@ -7,6 +7,10 @@ import { Home } from "./pages/home/Home"
 import { Profile } from "./pages/profile/Profile"
 import { Categories } from "./pages/categories/Categories"
 import { CreatePostForm } from "./components/CreatePostForm/CreatePostForm"
+import { MyProjects } from "./pages/myprojects/MyProjects"
+import { ErrorPage } from "./pages/errorpage/ErrorPage";
+import { CategoryPosts } from "./pages/categoryposts/CategoryPosts"
+
 import {
   createBrowserRouter,
   Navigate,
@@ -40,7 +44,6 @@ function App() {
     )
   }
 
-
   const ProfileLayout = () => {
     return (
       <QueryClientProvider client={queryClient}>
@@ -51,6 +54,18 @@ function App() {
       </QueryClientProvider>
     )
   }
+
+  const MyProjectsLayout = () => {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <div>
+          <Navbar/>
+          <MyProjects/>
+        </div>
+      </QueryClientProvider>
+    )
+  }
+
 
   
   const CreatePostFormLayout = () => {
@@ -63,6 +78,7 @@ function App() {
       </QueryClientProvider>
     )
   }
+  
 
   const ProtectedRoute = ({children}) => {
     if(!currentUser) {
@@ -76,6 +92,7 @@ function App() {
     {
       path: "/",
       element: <Layout />,
+      errorElement: <QueryClientProvider client={queryClient}><ErrorPage /></QueryClientProvider>,
       children: [
         {
           path: "/",
@@ -85,11 +102,10 @@ function App() {
           path: "/categories",
           element: <Categories />
         },
-        // {
-        //   path: "profile/:id",
-        //   // element: <ProtectedRoute><Profile /></ProtectedRoute>
-        //   element: <Profile />
-        // }
+        {
+          path: "/categories/:category",
+          element: <CategoryPosts />
+        },
       ]
     },
     {
@@ -97,8 +113,12 @@ function App() {
       element: <ProfileLayout />,
     },
     {
+      path: "myprojects",
+      element: <ProtectedRoute><MyProjectsLayout /></ProtectedRoute>,
+    },
+    {
       path: "/createpost",
-      element: <CreatePostFormLayout />,
+      element: <ProtectedRoute><CreatePostFormLayout /></ProtectedRoute>,
     },
     {
       path: "/login",

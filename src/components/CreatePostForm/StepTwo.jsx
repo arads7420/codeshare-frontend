@@ -1,7 +1,13 @@
 import "./createpostform.scss"
 import { useState } from "react";
+import { useQuery } from 'react-query'
+import { makeRequest } from "../../axios"
 
 export const StepTwo = ({error, inputs, handleChange}) => {  
+    const { isLoading, data: categories } = useQuery(['categories'], () =>
+      makeRequest.get("/categories").then(res => {return res.data})
+    )
+    
     return (
         <div>
             {error && (<div className="error">{error}</div>)}
@@ -14,11 +20,11 @@ export const StepTwo = ({error, inputs, handleChange}) => {
                     </select>
                 </div>
                 <div>
-                    <label>Select Categories</label>
-                    <select name="categories" onChange={handleChange} multiple>
-                        <option value="1">Artificial Intelligence</option>
-                        <option value="2">Cloud</option>
-                        <option value="3">Datascience</option>
+                    <label>Select a Category</label>
+                    <select name="category" onChange={handleChange}>
+                        {!isLoading && (categories.map(item => 
+                            <option value={item.id} key={item.id}>{item.name}</option>)
+                        )}
                     </select>
                 </div>
                 <div>

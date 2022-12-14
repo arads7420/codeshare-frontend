@@ -15,6 +15,7 @@ export const CreatePostForm = () => {
   const {currentUser} = useContext(AuthContext)
   const [page, setPage] = useState(0)
   const[error, setError] = useState(null)
+  const [images, setImages] = useState([])
   const [inputs, setInputs] = useState({
     title: "",
     shortDesc: "",
@@ -22,18 +23,30 @@ export const CreatePostForm = () => {
     link: "",
     logo: "",
     description: "",
-    categories: [],
+    category: null,
     user: {
       id: currentUser.id
     }
   })
 
+  const handleImagesUploadResult = (res) => {
+    if(res.event === 'success') {
+        setImages(prevState => [...prevState, res.info.url])
+    }
+  }
+
+  const handleDeleteImg = (e) => {
+    let url = images[e.currentTarget.getAttribute("data-idx")]
+    let newImg = images.filter(img => img !== url)
+    setImages(newImg)
+  }
+  
   const handleChange = e => {
     if(e.target.name === "type") {
       setInputs(prev => ({...prev, type: {id: Number(e.target.value)}}))
     }
-    else if(e.target.name === "categories") {
-      setInputs(prev => ({...prev, categories: Array.from(e.target.selectedOptions, option => { return {id: Number(option.value) } })}))
+    else if(e.target.name === "category") {
+      setInputs(prev => ({...prev, category: {id: Number(e.target.value)}}))
     }
     else {
       setInputs(prev => ({...prev, [e.target.name]: e.target.value}))
@@ -43,7 +56,7 @@ export const CreatePostForm = () => {
   const navigate = useNavigate()
 
   const mutation = useMutation((inputs) => {
-      return makeRequest.post("/posts", inputs)
+      return makeRequest.post("/posts", {...inputs, images: images})
     }, {
     onSuccess: () => {
       navigate("/")
@@ -70,7 +83,7 @@ export const CreatePostForm = () => {
     else if(inputs.description.length === 0) {
       setError("Please provide a description")
     }
-    else if(inputs.categories.length === 0) {
+    else if(inputs.category === null) {
       setError("Please provide a category for your project")
     }
     else {
@@ -82,7 +95,13 @@ export const CreatePostForm = () => {
 
   const PageDisplay = () => {
     if(page === 0) {
-      return <StepOne error={error} inputs={inputs} handleChange={handleChange}/>
+      return <StepOne 
+        images={images} 
+        handleDeleteImg={handleDeleteImg} 
+        error={error} inputs={inputs} 
+        handleChange={handleChange}
+        handleImagesUploadResult={handleImagesUploadResult}
+      />
     }
     else if(page === 1) {
       return <StepTwo error={error} inputs={inputs} handleChange={handleChange}/>

@@ -11,7 +11,7 @@ export const PostContainer = () => {
   return (
     <div className="postcontainer">
       {error ? "Something went wrong" 
-      :isLoading ? "Loading.." 
+      :isLoading ? "Loading..." 
       :data.map(post => <Post post={post} key={post.id} />)}
     </div>
   )

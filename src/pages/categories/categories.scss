@@ -1,0 +1,68 @@
+@import "../../style.scss";
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 60px 0;
+    color: var(--dark-font);
+    
+    .header {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 40px;
+        @include mobile {
+            padding: 0px 20px;
+        }
+        .title {
+            font-size: 2rem;
+            @include mobile {
+                font-size: 1.5rem;
+            }
+        }
+        .shortDesc {
+            font-weight: 200;
+            font-size: 1.2rem;
+            @include mobile {
+                font-size: 1rem;
+            }
+        }
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        flex-wrap: wrap;
+        .category-item {
+            padding: 20px 40px;
+            display: flex;
+            gap: 20px;
+            background-color: #ffffff;
+            color: var(--dark-font);
+            @include mobile {
+                padding: 20px 20px;
+            }
+            cursor: pointer;
+            .left {
+                img {
+                    object-fit: cover;
+                    border-radius: 10px;
+                    height: 80px;
+                }
+            }
+            .right {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                .name {
+                    font-weight: 600;
+                }
+                .desc {
+                    font-weight: 300;
+                    font-size: var(--ft-sm-1);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+@import "../../style.scss";
+
+.searchbar {
+    .search {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid var(--light-border);
+        border-radius: 24px;
+        padding: 0 10px;
+        input {
+            outline: none;
+            padding: 10px;
+            border: none;
+            // width: 600px;
+    
+            @include mobile {
+                width: auto;
+            }
+    
+        }
+    }
+
+}
+
+.searchcontainer {
+    height: 500px;
+    .searchresults {
+        padding: 40px 0;
+        // width: 600px;
+        @include mobile {
+            // width: 500px;
+        }
+        img {
+            width: 100px;
+        }
+    }
+}
